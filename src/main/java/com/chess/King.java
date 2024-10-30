@@ -1,5 +1,6 @@
 package com.chess;
 
+import com.chess.utils.PositionUtils;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class King extends Piece {
       int newCol = column + dir[1];
 
       if (isWithinBoard(newRow, newCol)) {
-        moves.add("" + (char) ('A' + newCol) + (newRow + 1));
+        moves.add(PositionUtils.formatPosition(newRow, newCol));
       }
     }
     return moves;
