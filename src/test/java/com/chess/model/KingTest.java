@@ -1,6 +1,8 @@
 package com.chess.model;
 
 import static com.chess.model.PieceType.KING;
+import static com.chess.utils.ExceptionMessages.INVALID_POSITION_FIRST_CHAR;
+import static com.chess.utils.ExceptionMessages.INVALID_POSITION_FORMAT;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -47,7 +49,7 @@ class KingTest {
       PieceFactory.createPiece(KING, "Z");
     });
 
-    assertEquals("Invalid position format:It must exactly contain 2 characters", exception.getMessage());
+    assertEquals(INVALID_POSITION_FORMAT, exception.getMessage());
   }
 
   @Test
@@ -56,7 +58,7 @@ class KingTest {
       PieceFactory.createPiece(KING, "");
     });
 
-    assertEquals("Invalid position format:It must exactly contain 2 characters", exception.getMessage());
+    assertEquals(INVALID_POSITION_FORMAT, exception.getMessage());
   }
 
   @Test
@@ -65,6 +67,6 @@ class KingTest {
       PieceFactory.createPiece(KING, "11");
     });
 
-    assertEquals("Invalid position format:Must exactly contain one character for column and one digit for row", exception.getMessage());
+    assertEquals(INVALID_POSITION_FIRST_CHAR, exception.getMessage());
   }
 }

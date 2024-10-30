@@ -1,6 +1,8 @@
 package com.chess.model;
 
 import static com.chess.model.PieceType.PAWN;
+import static com.chess.utils.ExceptionMessages.INVALID_POSITION_FIRST_CHAR;
+import static com.chess.utils.ExceptionMessages.INVALID_POSITION_FORMAT;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -37,7 +39,7 @@ class PawnTest {
       PieceFactory.createPiece(PAWN, "Z");
     });
 
-    assertEquals("Invalid position format:It must exactly contain 2 characters", exception.getMessage());
+    assertEquals(INVALID_POSITION_FORMAT, exception.getMessage());
   }
 
   @Test
@@ -46,7 +48,7 @@ class PawnTest {
       PieceFactory.createPiece(PAWN, "");
     });
 
-    assertEquals("Invalid position format:It must exactly contain 2 characters", exception.getMessage());
+    assertEquals(INVALID_POSITION_FORMAT, exception.getMessage());
   }
 
   @Test
@@ -55,6 +57,6 @@ class PawnTest {
       PieceFactory.createPiece(PAWN, "11");
     });
 
-    assertEquals("Invalid position format:Must exactly contain one character for column and one digit for row", exception.getMessage());
+    assertEquals(INVALID_POSITION_FIRST_CHAR, exception.getMessage());
   }
 }
