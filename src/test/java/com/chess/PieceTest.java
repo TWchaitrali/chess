@@ -46,4 +46,13 @@ class PieceTest {
     assertEquals(1, moves.size(), "Pawn should have 1 move");
     assertTrue(moves.contains("G2"));
   }
+
+  @Test
+  void shouldReturnNoMorePossibleMovesForPawnFromLastPosition() {
+    Pawn pawn=new Pawn("A8");
+
+    final List<String> moves = pawn.allPossibleMoves();
+
+    assertEquals(0, moves.size(), "Pawn should have 0 moves from A8");
+  }
 }
