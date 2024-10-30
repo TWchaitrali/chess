@@ -13,7 +13,7 @@ public class Pawn extends Piece {
   public List<String> allPossibleMoves() {
     List<String> moves = new ArrayList<>();
     int newRow = row + 1;
-    if (newRow >= 0 && newRow < 8 && column >= 0 && column < 8) {
+    if (isWithinBoard(newRow,column)) {
       moves.add("" + (char) ('A' + column) + (newRow + 1));
     }
     return moves;

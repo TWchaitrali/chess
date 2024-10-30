@@ -18,7 +18,7 @@ public class King extends Piece {
       int newRow = row + dir[0];
       int newCol = column + dir[1];
 
-      if (newRow >= 0 && newRow < 8 && newCol >= 0 && newCol < 8) {
+      if (isWithinBoard(newRow, newCol)) {
         moves.add("" + (char) ('A' + newCol) + (newRow + 1));
       }
     }
