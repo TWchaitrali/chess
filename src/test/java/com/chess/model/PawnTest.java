@@ -1,15 +1,17 @@
 package com.chess.model;
 
+import static com.chess.model.PieceType.PAWN;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.chess.factory.PieceFactory;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class PawnTest {
   @Test
   void shouldReturnAllPossibleMoves() {
-    Pawn pawn=new Pawn("G1");
+    Piece pawn= PieceFactory.createPiece(PAWN,"G1");
 
     final List<String> moves = pawn.allPossibleMoves();
 
@@ -19,7 +21,7 @@ class PawnTest {
 
   @Test
   void shouldReturnNoMorePossibleMovesFromLastPosition() {
-    Pawn pawn=new Pawn("A8");
+    Piece pawn= PieceFactory.createPiece(PAWN,"A8");
 
     final List<String> moves = pawn.allPossibleMoves();
 

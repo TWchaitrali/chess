@@ -1,8 +1,10 @@
 package com.chess.model;
 
+import static com.chess.model.PieceType.KING;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.chess.factory.PieceFactory;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +12,7 @@ class KingTest {
 
   @Test
   void shouldReturnAllPossibleMoves() {
-    King king = new King("D5");
+    Piece king = PieceFactory.createPiece(KING,"D5");
 
     final List<String> moves = king.allPossibleMoves();
 
@@ -27,7 +29,7 @@ class KingTest {
 
   @Test
   void shouldReturnAllPossibleMovesFromCorner() {
-    King king = new King("A1");
+    Piece king = PieceFactory.createPiece(KING,"A1");
 
     final List<String> moves = king.allPossibleMoves();
 
