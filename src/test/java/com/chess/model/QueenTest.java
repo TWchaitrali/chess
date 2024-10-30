@@ -2,8 +2,10 @@ package com.chess.model;
 
 import static com.chess.model.PieceType.QUEEN;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.chess.exception.ValidationException;
 import com.chess.factory.PieceFactory;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -36,5 +38,32 @@ class QueenTest {
     List<String> actualMoves = queen.allPossibleMoves();
 
     assertTrue(actualMoves.containsAll(expectedMoves));
+  }
+
+  @Test
+  void shouldThrowErrorForValidationExceptionGivenIncorrectInputFormat() {
+    Exception exception = assertThrows(ValidationException.class, () -> {
+      PieceFactory.createPiece(QUEEN, "Z");
+    });
+
+    assertEquals("Invalid position format:It must exactly contain 2 characters", exception.getMessage());
+  }
+
+  @Test
+  void shouldThrowErrorForValidationExceptionGivenEmptyString() {
+    Exception exception = assertThrows(ValidationException.class, () -> {
+      PieceFactory.createPiece(QUEEN, "");
+    });
+
+    assertEquals("Invalid position format:It must exactly contain 2 characters", exception.getMessage());
+  }
+
+  @Test
+  void shouldThrowErrorForValidationExceptionGivenBothAreDigits() {
+    Exception exception = assertThrows(ValidationException.class, () -> {
+      PieceFactory.createPiece(QUEEN, "11");
+    });
+
+    assertEquals("Invalid position format:Must exactly contain one character for column and one digit for row", exception.getMessage());
   }
 }
