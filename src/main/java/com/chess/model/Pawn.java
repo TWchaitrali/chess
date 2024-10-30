@@ -1,4 +1,4 @@
-package com.chess;
+package com.chess.model;
 
 import com.chess.utils.PositionUtils;
 import java.util.ArrayList;

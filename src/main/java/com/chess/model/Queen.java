@@ -1,10 +1,10 @@
-package com.chess;
+package com.chess.model;
 
 import com.chess.utils.PositionUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Queen extends Piece{
+public class Queen extends Piece {
 
   public Queen(String position) {
     super(position);
