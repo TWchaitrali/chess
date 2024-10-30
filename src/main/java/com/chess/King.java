@@ -3,16 +3,13 @@ package com.chess;
 import java.util.ArrayList;
 import java.util.List;
 
-public class King {
-
-  private final int row;
-  private final int column;
+public class King extends Piece {
 
   public King(String position) {
-    this.row = Integer.parseInt(position.substring(1, 2)) - 1;
-    this.column = position.charAt(0) - 'A';
+    super(position);
   }
 
+  @Override
   public List<String> allPossibleMoves() {
     List<String> moves = new ArrayList<>();
     int[][] directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
