@@ -36,4 +36,14 @@ class PieceTest {
     assertTrue(moves.contains("B1"));
     assertTrue(moves.contains("B2"));
   }
+
+  @Test
+  void shouldReturnAllPossibleMovesForPawn() {
+    Pawn pawn=new Pawn("G1");
+
+    final List<String> moves = pawn.allPossibleMoves();
+
+    assertEquals(1, moves.size(), "Pawn should have 1 move");
+    assertTrue(moves.contains("G2"));
+  }
 }
