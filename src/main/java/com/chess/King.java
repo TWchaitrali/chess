@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class King {
+
   private final int row;
   private final int column;
 
@@ -14,12 +15,15 @@ public class King {
 
   public List<String> allPossibleMoves() {
     List<String> moves = new ArrayList<>();
-    int[][] directions = { {1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1} };
+    int[][] directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
 
     for (int[] dir : directions) {
       int newRow = row + dir[0];
       int newCol = column + dir[1];
-      moves.add("" + (char) ('A' + newCol) + (newRow + 1));
+
+      if (newRow >= 0 && newRow < 8 && newCol >= 0 && newCol < 8) {
+        moves.add("" + (char) ('A' + newCol) + (newRow + 1));
+      }
     }
     return moves;
   }
