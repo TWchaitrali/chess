@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 class PawnTest {
   @Test
-  void shouldReturnAllPossibleMovesForPawn() {
+  void shouldReturnAllPossibleMoves() {
     Pawn pawn=new Pawn("G1");
 
     final List<String> moves = pawn.allPossibleMoves();
@@ -18,7 +18,7 @@ class PawnTest {
   }
 
   @Test
-  void shouldReturnNoMorePossibleMovesForPawnFromLastPosition() {
+  void shouldReturnNoMorePossibleMovesFromLastPosition() {
     Pawn pawn=new Pawn("A8");
 
     final List<String> moves = pawn.allPossibleMoves();

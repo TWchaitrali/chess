@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 class KingTest {
 
   @Test
-  void shouldReturnAllPossibleMovesForKing() {
+  void shouldReturnAllPossibleMoves() {
     King king = new King("D5");
 
     final List<String> moves = king.allPossibleMoves();
@@ -26,7 +26,7 @@ class KingTest {
   }
 
   @Test
-  void shouldReturnAllPossibleMovesForKingFromCorner() {
+  void shouldReturnAllPossibleMovesFromCorner() {
     King king = new King("A1");
 
     final List<String> moves = king.allPossibleMoves();
