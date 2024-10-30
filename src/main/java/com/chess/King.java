@@ -8,8 +8,8 @@ public class King {
   private final int column;
 
   public King(String position) {
-    this.row = Integer.parseInt(position.substring(1, 2));
-    this.column = position.charAt(0)-'A';
+    this.row = Integer.parseInt(position.substring(1, 2)) - 1;
+    this.column = position.charAt(0) - 'A';
   }
 
   public List<String> allPossibleMoves() {
