@@ -26,4 +26,32 @@ class PositionTest {
   void shouldThrowValidationExceptionGivenInputStringIsNotValid() {
     assertThrows(ValidationException.class, () -> Position.from("H"));
   }
+
+  @Test
+  void shouldThrowErrorForValidationExceptionGivenIncorrectInputFormat() {
+    assertThrows(ValidationException.class, () -> {
+      Position.from("Z");
+    });
+  }
+
+  @Test
+  void shouldThrowErrorForValidationExceptionGivenEmptyString() {
+    assertThrows(ValidationException.class, () -> {
+      Position.from("");
+    });
+  }
+
+  @Test
+  void shouldThrowErrorForValidationExceptionGivenFirstCharacterIsNotCharacter() {
+    assertThrows(ValidationException.class, () -> {
+      Position.from("11");
+    });
+  }
+
+  @Test
+  void shouldThrowErrorForValidationExceptionGivenSecondCharacterIsNotInteger() {
+    assertThrows(ValidationException.class, () -> {
+      Position.from("1A");
+    });
+  }
 }
