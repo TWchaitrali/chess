@@ -1,5 +1,6 @@
 package com.chess.model;
 
+import com.chess.utils.Direction;
 import com.chess.utils.PositionUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +14,11 @@ public class Pawn extends Piece {
   @Override
   public List<String> allPossibleMoves() {
     List<String> moves = new ArrayList<>();
-    int newRow = row + 1;
-    if (isWithinBoard(newRow, column)) {
-      moves.add(PositionUtils.formatPosition(newRow, column));
+    final Direction forward = Direction.FORWARD;
+    int newRow = row + forward.getRowChange();
+    int newCol = column + forward.getColChange();
+    if (isWithinBoard(newRow, newCol)) {
+      moves.add(PositionUtils.formatPosition(newRow, newCol));
     }
     return moves;
   }
