@@ -3,6 +3,7 @@ package com.chess.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import com.chess.exception.InvalidPositionException;
 import com.chess.exception.ValidationException;
 import org.junit.jupiter.api.Test;
 
@@ -52,6 +53,13 @@ class PositionTest {
   void shouldThrowErrorForValidationExceptionGivenSecondCharacterIsNotInteger() {
     assertThrows(ValidationException.class, () -> {
       Position.from("1A");
+    });
+  }
+
+  @Test
+  void shouldThrowErrorForValidationExceptionGivenPositionIsNotInGrid() {
+    assertThrows(InvalidPositionException.class, () -> {
+      Position.from("Z9");
     });
   }
 }

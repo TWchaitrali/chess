@@ -1,9 +1,11 @@
 package com.chess.model;
 
+import static com.chess.utils.Constants.BOARD_SIZE;
 import static com.chess.utils.ExceptionMessages.INVALID_POSITION_FIRST_CHAR;
 import static com.chess.utils.ExceptionMessages.INVALID_POSITION_FORMAT;
 import static com.chess.utils.ExceptionMessages.INVALID_POSITION_SECOND_CHAR;
 
+import com.chess.exception.InvalidPositionException;
 import com.chess.exception.ValidationException;
 
 public record Position(int row, int column) {
@@ -13,7 +15,11 @@ public record Position(int row, int column) {
 
     int row = input.charAt(1) - '0';
     int column = input.charAt(0) - 'A' + 1;
-    return new Position(row, column);
+    Position position = new Position(row, column);
+    if (!position.isWithinBoard()) {
+      throw new InvalidPositionException();
+    }
+    return position;
   }
 
   private static void validate(String position) {
@@ -26,9 +32,15 @@ public record Position(int row, int column) {
     if (!Character.isLetter(columnChar)) {
       throw new ValidationException(INVALID_POSITION_FIRST_CHAR);
     }
-    if(!Character.isDigit(rowChar)){
+    if (!Character.isDigit(rowChar)) {
       throw new ValidationException(INVALID_POSITION_SECOND_CHAR);
     }
+  }
+
+  public boolean isWithinBoard() {
+    boolean isWithinRowBounds = row >= 1 && row <= BOARD_SIZE;
+    boolean isWithinColumnBounds = column >= 1 && column <= BOARD_SIZE;
+    return isWithinRowBounds && isWithinColumnBounds;
   }
 
 }
