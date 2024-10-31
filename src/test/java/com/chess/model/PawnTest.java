@@ -17,17 +17,17 @@ class PawnTest {
   void shouldReturnAllPossibleMoves() {
     Piece pawn= PieceFactory.createPiece(PAWN,Position.from("G1"));
 
-    final List<String> moves = pawn.allPossibleMoves();
+    final List<Position> moves = pawn.allPossibleMoves();
 
     assertEquals(1, moves.size(), "Pawn should have 1 move");
-    assertTrue(moves.contains("G2"));
+    assertTrue(moves.contains(Position.from("G2")));
   }
 
   @Test
   void shouldReturnNoMorePossibleMovesFromLastPosition() {
     Piece pawn= PieceFactory.createPiece(PAWN,Position.from("A8"));
 
-    final List<String> moves = pawn.allPossibleMoves();
+    final List<Position> moves = pawn.allPossibleMoves();
 
     assertEquals(0, moves.size(), "Pawn should have 0 moves from A8");
   }

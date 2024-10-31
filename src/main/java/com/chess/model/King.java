@@ -1,8 +1,7 @@
 package com.chess.model;
 
 import com.chess.utils.Direction;
-import com.chess.utils.PositionUtils;
-import java.util.ArrayList;
+import com.chess.utils.MovementUtils;
 import java.util.List;
 
 public class King extends Piece {
@@ -12,18 +11,8 @@ public class King extends Piece {
   }
 
   @Override
-  public List<String> allPossibleMoves() {
-    List<String> moves = new ArrayList<>();
-    final List<Direction> standardDirections = Direction.getStandardDirections();
-
-    for (Direction dir : standardDirections) {
-      int newRow = row + dir.getRowChange();
-      int newCol = column + dir.getColChange();
-
-      if (isWithinBoard(newRow, newCol)) {
-        moves.add(PositionUtils.formatPosition(newRow, newCol));
-      }
-    }
-    return moves;
+  public List<Position> allPossibleMoves() {
+    final List<Direction> directions = Direction.getStandardDirections();
+    return MovementUtils.getMoves(position,directions,1);
   }
 }

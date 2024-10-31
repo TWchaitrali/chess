@@ -16,7 +16,7 @@ public abstract class Piece {
     this.column = position.column();
   }
 
-  public abstract List<String> allPossibleMoves();
+  public abstract List<Position> allPossibleMoves();
 
   protected boolean isWithinBoard(int newRow, int newColumn) {
     boolean isWithinRowBounds = newRow >= 1 && newRow <= BOARD_SIZE;

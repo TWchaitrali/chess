@@ -1,8 +1,7 @@
 package com.chess.model;
 
 import com.chess.utils.Direction;
-import com.chess.utils.PositionUtils;
-import java.util.ArrayList;
+import com.chess.utils.MovementUtils;
 import java.util.List;
 
 public class Pawn extends Piece {
@@ -12,14 +11,8 @@ public class Pawn extends Piece {
   }
 
   @Override
-  public List<String> allPossibleMoves() {
-    List<String> moves = new ArrayList<>();
+  public List<Position> allPossibleMoves() {
     final Direction forward = Direction.FORWARD;
-    int newRow = row + forward.getRowChange();
-    int newCol = column + forward.getColChange();
-    if (isWithinBoard(newRow, newCol)) {
-      moves.add(PositionUtils.formatPosition(newRow, newCol));
-    }
-    return moves;
+    return MovementUtils.getMoves(position,List.of(forward),1);
   }
 }
