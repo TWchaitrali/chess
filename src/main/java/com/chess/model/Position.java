@@ -43,4 +43,16 @@ public record Position(int row, int column) {
     return isWithinRowBounds && isWithinColumnBounds;
   }
 
+  public String toGridFormat() {
+   return String.valueOf(columnToLetter()) + rowToBoardIndex();
+  }
+
+  private char columnToLetter() {
+    return (char) ('A' + column - 1);
+  }
+
+  private int rowToBoardIndex() {
+    return row;
+  }
+
 }
