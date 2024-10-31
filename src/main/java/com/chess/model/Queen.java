@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Queen extends Piece {
 
-  public Queen(String position) {
+  public Queen(Position position) {
     super(position);
   }
 

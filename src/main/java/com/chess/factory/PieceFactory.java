@@ -4,11 +4,12 @@ import com.chess.model.King;
 import com.chess.model.Pawn;
 import com.chess.model.Piece;
 import com.chess.model.PieceType;
+import com.chess.model.Position;
 import com.chess.model.Queen;
 
 public class PieceFactory {
 
-  public static Piece createPiece(PieceType pieceType, String position) {
+  public static Piece createPiece(PieceType pieceType, Position position) {
     switch (pieceType) {
       case PAWN:
         return new Pawn(position);

@@ -16,7 +16,7 @@ class KingTest {
 
   @Test
   void shouldReturnAllPossibleMoves() {
-    Piece king = PieceFactory.createPiece(KING, "D5");
+    Piece king = PieceFactory.createPiece(KING, Position.from("D5"));
 
     final List<String> moves = king.allPossibleMoves();
 
@@ -33,7 +33,7 @@ class KingTest {
 
   @Test
   void shouldReturnAllPossibleMovesFromCorner() {
-    Piece king = PieceFactory.createPiece(KING, "A1");
+    Piece king = PieceFactory.createPiece(KING, Position.from("A1"));
 
     final List<String> moves = king.allPossibleMoves();
 
@@ -46,7 +46,7 @@ class KingTest {
   @Test
   void shouldThrowErrorForValidationExceptionGivenIncorrectInputFormat() {
     Exception exception = assertThrows(ValidationException.class, () -> {
-      PieceFactory.createPiece(KING, "Z");
+      PieceFactory.createPiece(KING, Position.from("Z"));
     });
 
     assertEquals(INVALID_POSITION_FORMAT, exception.getMessage());
@@ -55,7 +55,7 @@ class KingTest {
   @Test
   void shouldThrowErrorForValidationExceptionGivenEmptyString() {
     Exception exception = assertThrows(ValidationException.class, () -> {
-      PieceFactory.createPiece(KING, "");
+      PieceFactory.createPiece(KING, Position.from(""));
     });
 
     assertEquals(INVALID_POSITION_FORMAT, exception.getMessage());
@@ -64,7 +64,7 @@ class KingTest {
   @Test
   void shouldThrowErrorForValidationExceptionGivenBothAreDigits() {
     Exception exception = assertThrows(ValidationException.class, () -> {
-      PieceFactory.createPiece(KING, "11");
+      PieceFactory.createPiece(KING, Position.from("11"));
     });
 
     assertEquals(INVALID_POSITION_FIRST_CHAR, exception.getMessage());

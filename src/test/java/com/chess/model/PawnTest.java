@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 class PawnTest {
   @Test
   void shouldReturnAllPossibleMoves() {
-    Piece pawn= PieceFactory.createPiece(PAWN,"G1");
+    Piece pawn= PieceFactory.createPiece(PAWN,Position.from("G1"));
 
     final List<String> moves = pawn.allPossibleMoves();
 
@@ -25,7 +25,7 @@ class PawnTest {
 
   @Test
   void shouldReturnNoMorePossibleMovesFromLastPosition() {
-    Piece pawn= PieceFactory.createPiece(PAWN,"A8");
+    Piece pawn= PieceFactory.createPiece(PAWN,Position.from("A8"));
 
     final List<String> moves = pawn.allPossibleMoves();
 
@@ -36,7 +36,7 @@ class PawnTest {
   @Test
   void shouldThrowErrorForValidationExceptionGivenIncorrectInputFormat() {
     Exception exception = assertThrows(ValidationException.class, () -> {
-      PieceFactory.createPiece(PAWN, "Z");
+      PieceFactory.createPiece(PAWN, Position.from("Z"));
     });
 
     assertEquals(INVALID_POSITION_FORMAT, exception.getMessage());
@@ -45,7 +45,7 @@ class PawnTest {
   @Test
   void shouldThrowErrorForValidationExceptionGivenEmptyString() {
     Exception exception = assertThrows(ValidationException.class, () -> {
-      PieceFactory.createPiece(PAWN, "");
+      PieceFactory.createPiece(PAWN, Position.from(""));
     });
 
     assertEquals(INVALID_POSITION_FORMAT, exception.getMessage());
@@ -54,7 +54,7 @@ class PawnTest {
   @Test
   void shouldThrowErrorForValidationExceptionGivenBothAreDigits() {
     Exception exception = assertThrows(ValidationException.class, () -> {
-      PieceFactory.createPiece(PAWN, "11");
+      PieceFactory.createPiece(PAWN, Position.from("11"));
     });
 
     assertEquals(INVALID_POSITION_FIRST_CHAR, exception.getMessage());

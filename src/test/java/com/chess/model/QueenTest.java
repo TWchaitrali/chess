@@ -16,7 +16,7 @@ class QueenTest {
 
   @Test
   void shouldReturnAllPossibleMoves() {
-    Piece queen = PieceFactory.createPiece(QUEEN, "E4");
+    Piece queen = PieceFactory.createPiece(QUEEN, Position.from("E4"));
     final List<String> expectedMoves = List.of("A4", "B4", "C4", "D4", "F4", "G4", "H4", "E1", "E2",
         "E3", "E5", "E6", "E7", "E8", "A8", "B7", "C6", "D5", "F3", "G2", "H1", "B1", "C2", "D3",
         "F5", "G6", "H7");
@@ -29,7 +29,7 @@ class QueenTest {
 
   @Test
   void shouldReturnAllPossibleMovesFromCorner() {
-    Piece queen = PieceFactory.createPiece(QUEEN, "A1");
+    Piece queen = PieceFactory.createPiece(QUEEN, Position.from("A1"));
 
     final List<String> expectedMoves = List.of(
         "A2", "A3", "A4", "A5", "A6", "A7", "A8",  // vertical up
@@ -45,7 +45,7 @@ class QueenTest {
   @Test
   void shouldThrowErrorForValidationExceptionGivenIncorrectInputFormat() {
     Exception exception = assertThrows(ValidationException.class, () -> {
-      PieceFactory.createPiece(QUEEN, "Z");
+      PieceFactory.createPiece(QUEEN, Position.from("Z"));
     });
 
     assertEquals(INVALID_POSITION_FORMAT, exception.getMessage());
@@ -54,7 +54,7 @@ class QueenTest {
   @Test
   void shouldThrowErrorForValidationExceptionGivenEmptyString() {
     Exception exception = assertThrows(ValidationException.class, () -> {
-      PieceFactory.createPiece(QUEEN, "");
+      PieceFactory.createPiece(QUEEN, Position.from(""));
     });
 
     assertEquals(INVALID_POSITION_FORMAT, exception.getMessage());
@@ -63,7 +63,7 @@ class QueenTest {
   @Test
   void shouldThrowErrorForValidationExceptionGivenBothAreDigits() {
     Exception exception = assertThrows(ValidationException.class, () -> {
-      PieceFactory.createPiece(QUEEN, "11");
+      PieceFactory.createPiece(QUEEN, Position.from("11"));
     });
 
     assertEquals(INVALID_POSITION_FIRST_CHAR, exception.getMessage());
