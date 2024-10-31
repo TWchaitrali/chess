@@ -8,24 +8,26 @@ import java.util.stream.IntStream;
 
 public class MovementUtils {
 
-  public static List<Position> getMoves(Position position, List<Direction> directions, int steps) {
+  public static List<Position> getMoves(Position currentPosition, List<Direction> directions,
+      int steps) {
     return directions.stream()
-        .map(direction -> calculateMovesInDirection(position, steps, direction))
+        .map(direction -> calculateMovesInDirection(currentPosition, steps, direction))
         .flatMap(Collection::stream)
         .toList();
   }
 
-  private static List<Position> calculateMovesInDirection(Position position, int steps,
+  private static List<Position> calculateMovesInDirection(Position currentPosition, int steps,
       Direction direction) {
 
     return IntStream.range(1, steps + 1)
-        .mapToObj(step -> getNextPosition(position, direction, step))
-        .filter(Position::isWithinBoard).toList();
+        .mapToObj(step -> getNextPosition(currentPosition, direction, step))
+        .filter(Position::isWithinBoard)
+        .toList();
   }
 
-  private static Position getNextPosition(Position position, Direction direction, int step) {
-    final int nextRow = position.row() + direction.getRowChange() * step;
-    final int nextCol = position.column() + direction.getColChange() * step;
+  private static Position getNextPosition(Position currentPosition, Direction direction, int step) {
+    final int nextRow = currentPosition.row() + direction.getRowChange() * step;
+    final int nextCol = currentPosition.column() + direction.getColChange() * step;
     return new Position(nextRow, nextCol);
   }
 }
