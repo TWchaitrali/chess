@@ -2,6 +2,7 @@ package com.chess.utils;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.chess.model.Direction;
 import com.chess.model.Position;
 import java.util.List;
 import org.junit.jupiter.api.Test;

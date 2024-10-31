@@ -1,5 +1,6 @@
 package com.chess.utils;
 
+import com.chess.model.Direction;
 import com.chess.model.Position;
 import java.util.Collection;
 import java.util.List;
