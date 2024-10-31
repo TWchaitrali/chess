@@ -7,10 +7,10 @@ public class PositionUtils {
   }
 
   private static char columnToLetter(int col) {
-    return (char) ('A' + col);
+    return (char) ('A' + col-1);
   }
 
   private static int rowToBoardIndex(int row) {
-    return row + 1;
+    return row;
   }
 }

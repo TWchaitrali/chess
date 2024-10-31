@@ -10,12 +10,12 @@ class PositionUtilsTest {
   void shouldReturnChessPositionGivenRowAndColumn() {
     final String position = PositionUtils.formatPosition(3, 4);
 
-    assertEquals("E4", position);
+    assertEquals("D3", position);
   }
 
   @Test
   void shouldReturnChessPositionGivenRowAndColumnForCorner() {
-    final String position = PositionUtils.formatPosition(0, 0);
+    final String position = PositionUtils.formatPosition(1, 1);
 
     assertEquals("A1", position);
   }
